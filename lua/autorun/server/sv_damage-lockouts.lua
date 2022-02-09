@@ -9,7 +9,7 @@ local spawnPropTimeAfterRespawn = 15
 
 local function sendNotify( ply, time, string )
     net.Start( "notifylockout" )
-    net.WriteInt( math.ceil( time ), 4 )
+    net.WriteInt( math.ceil( time ), 8 )
     net.WriteString( string )
     net.Send( ply )
 end
@@ -111,4 +111,4 @@ local function onSpawningIn( ply )
     ply.LockoutSpawnTime = CurTime()
 end
 
-hook.Add( "PostPlayerDeath", "SpawnDelayAfterSpawningIn", onSpawningIn )
+hook.Add( "PlayerSpawn", "SpawnDelayAfterSpawningIn", onSpawningIn )
