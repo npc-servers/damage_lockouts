@@ -1,6 +1,5 @@
 
 local IsValid = IsValid
-local worldEnt = game.GetWorld()
 util.AddNetworkString( "notifylockout" )
 
 local tookDamageTime = 5
@@ -80,7 +79,7 @@ local function onDamage( ent, dmg )
     if dmg:GetDamage() == 0 then return end
 
     local attacker = dmg:GetAttacker()
-    if attacker == worldEnt then return end
+    if attacker:IsWorld() or attacker:IsNPC() then return end
 
     ent.LockoutTookDamage = CurTime()
 
