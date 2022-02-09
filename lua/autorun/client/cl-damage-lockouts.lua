@@ -1,0 +1,5 @@
+net.Receive( "notifylockout", function()
+    local time = net.ReadInt( 4 )
+    local txt = net.ReadString()
+    notification.AddLegacy( txt .. " " .. time .. " seconds", 0, 3 )
+end)
