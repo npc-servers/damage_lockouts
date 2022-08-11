@@ -56,8 +56,8 @@ local function canSpawnProp( ply )
         return false
     end
 
-    local source = debug.getinfo( 5 ).short_src
-    if string.find( source, "advdupe2" ) then return end
+    local source = debug.getinfo( 5 )
+    if source and source.short_src and string.find( source.short_src, "advdupe2" ) then return end
 
     time = tookDamage( ply )
     if time then
