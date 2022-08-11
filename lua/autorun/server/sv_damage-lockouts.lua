@@ -4,7 +4,7 @@ util.AddNetworkString( "notifylockout" )
 
 local tookDamageTime = 5
 local didDamageTime = 5
-local spawnPropTimeAfterRespawn = 15
+local spawnPropTimeAfterRespawn = 3
 
 local function sendNotify( ply, time, string )
     net.Start( "notifylockout" )
@@ -55,6 +55,9 @@ local function canSpawnProp( ply )
         sendNotify( ply, time, "You spawned in, you can spawn props in" )
         return false
     end
+
+    local source = debug.getinfo( 5 ).short_src
+    if string.find( source, "advdupe2" ) then return end
 
     time = tookDamage( ply )
     if time then
