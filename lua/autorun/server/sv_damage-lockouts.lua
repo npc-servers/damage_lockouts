@@ -2,8 +2,8 @@
 local IsValid = IsValid
 util.AddNetworkString( "notifylockout" )
 
-local tookDamageTime = 5
-local didDamageTime = 5
+local tookDamageTime = 3
+local didDamageTime = 3
 local spawnPropTimeAfterRespawn = 3
 
 local function sendNotify( ply, time, string )
