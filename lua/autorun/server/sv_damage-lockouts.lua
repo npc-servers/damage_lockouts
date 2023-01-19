@@ -93,22 +93,6 @@ end
 
 hook.Add( "PostEntityTakeDamage", "SpawnDelayAfterDamage", onDamage )
 
-local function canEnterBuild( ply )
-    local time = tookDamage( ply )
-    if time then
-        sendNotify( ply, time, "You recently took damage you can enter build in" )
-        return true
-    end
-
-    time = didDamage( ply )
-    if time then
-        sendNotify( ply, time, "You recently did damage you can enter build in" )
-        return true
-    end
-end
-
-hook.Add( "kyleBuildmodeShouldBlockEnterBuild", "BlockBuildDelayAfterDamage", canEnterBuild )
-
 local function onSpawningIn( ply )
     ply.LockoutSpawnTime = CurTime()
 end
