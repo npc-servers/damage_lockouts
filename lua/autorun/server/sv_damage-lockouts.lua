@@ -83,6 +83,7 @@ local function onDamage( ent, dmg )
 
     local attacker = dmg:GetAttacker()
     if attacker:IsWorld() or attacker:IsNPC() then return end
+    if attacker == ent then return end
 
     ent.LockoutTookDamage = CurTime()
 
